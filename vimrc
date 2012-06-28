@@ -1,7 +1,7 @@
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer: amix the lucky stiff
 "             http://amix.dk - amix@amix.dk
-"
+" 
 " Version: 3.6 - 25/08/10 14:40:30
 "
 " Blog_post: 
@@ -75,6 +75,8 @@
 "     > Supertab - http://www.vim.org/scripts/script.php?script_id=1643
 "     > Pathogen - https://github.com/tpope/vim-pathogen
 "     > NERD Tree - https://github.com/scrooloose/nerdtree
+"     > T-Comment - https://github.com/tomtom/tcomment_vim
+"     > vim-EasyTags - https://github.com/xolox/vim-easytags
 "
 "
 "  Revisions:
@@ -170,7 +172,7 @@ syntax enable "Enable syntax hl
 
 " Set font according to system
 if MySys() == "mac"
-  set gfn=Menlo:h14
+  set gfn=Menlo:h15
   set shell=/bin/bash
 elseif MySys() == "windows"
   set gfn=Bitstream\ Vera\ Sans\ Mono:h10
@@ -232,7 +234,9 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indet
-set wrap "Wrap lines
+" set wrap "Wrap lines
+" set linebreak
+" set nolist
 
 
 """"""""""""""""""""""""""""""
@@ -339,6 +343,8 @@ func! CurrentFileDir(cmd)
   return a:cmd . " " . expand("%:p:h") . "/"
 endfunc
 
+" Adding new line without enter insert mode
+nnoremap <NL> a<CR><ESC>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs and buffers
@@ -352,11 +358,18 @@ map <space> /
 map <c-space> ?
 map <silent> <leader><cr> :noh<cr>
 
+" <Ctrl-l> redraws the screen and removes and search highlighting.
+nnoremap <silent> _ :nohl<CR> 
+
 " Smart way to move btw. windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+let g:BASH_Ctrl_j = 'off'
+let g:BASH_Ctrl_k = 'off'
+let g:BASH_Ctrl_h = 'off'
+let g:BASH_Ctrl_l = 'off'
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
@@ -482,6 +495,7 @@ iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Mapping for NERDtree
 noremap <leader>nt :NERDTree<CR>
+
 "Remap VIM 0
 map 0 ^
 
@@ -619,7 +633,7 @@ map <leader>f :MRU<CR>
 """"""""""""""""""""""""""""""
 " => Command-T
 """"""""""""""""""""""""""""""
-let g:CommandTMaxHeight = 15
+let g:CommandTMaxHeight = 10
 set wildignore+=*.o,*.obj,.git,*.pyc
 noremap <leader>y :CommandTFlush<cr>
 "noremap! <leader>j :PeepOpen<cr>
@@ -657,3 +671,9 @@ if MySys() == "mac"
       au GUIEnter * set fullscreen
     endif
 endif
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Cscope
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"sourcing the cscope file
+" source ~/.vim/plugin/cscope_maps.vim
