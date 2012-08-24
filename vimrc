@@ -72,7 +72,6 @@
 "           info -> :help CommandT
 "           screencast and web-help -> http://amix.dk/blog/post/19501
 "     
-"     > Supertab - http://www.vim.org/scripts/script.php?script_id=1643
 "     > Pathogen - https://github.com/tpope/vim-pathogen
 "     > NERD Tree - https://github.com/scrooloose/nerdtree
 "     > T-Comment - https://github.com/tomtom/tcomment_vim
@@ -636,6 +635,7 @@ map <leader>f :MRU<CR>
 let g:CommandTMaxHeight = 10
 set wildignore+=*.o,*.obj,.git,*.pyc
 noremap <leader>y :CommandTFlush<cr>
+noremap <leader>t :CommandT<cr>
 "noremap! <leader>j :PeepOpen<cr>
 
 
