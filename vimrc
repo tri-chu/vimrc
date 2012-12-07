@@ -74,8 +74,8 @@
 "     
 "     > Pathogen - https://github.com/tpope/vim-pathogen
 "     > NERD Tree - https://github.com/scrooloose/nerdtree
-"     > T-Comment - https://github.com/tomtom/tcomment_vim
 "     > vim-EasyTags - https://github.com/xolox/vim-easytags
+"     > NERD Commenter - git@github.com:scrooloose/nerdcommenter.git
 "
 "
 "  Revisions:
@@ -111,7 +111,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<cr> 
 
 if MySys() == "windows"
     " Fast editing of the .vimrc
@@ -183,11 +183,10 @@ endif
 if has("gui_running")
   set guioptions-=T
   set t_Co=256
-  set background=dark
-  colorscheme inkpot
+  colorscheme AnotherDark
 else
   set background=light
-  colorscheme habilight
+  colorscheme Dawn
 endif
 
 set encoding=utf8
@@ -198,6 +197,7 @@ endtry
 
 set ffs=unix,dos,mac "Default file types
 
+au BufNewFile,BufRead *.vb set ft=vbnet
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -233,7 +233,7 @@ set tw=500
 
 set ai "Auto indent
 set si "Smart indet
-" set wrap "Wrap lines
+set nowrap "Wrap lines
 " set linebreak
 " set nolist
 
