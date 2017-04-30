@@ -186,7 +186,7 @@ if has("gui_running")
   colorscheme AnotherDark
 else
   set background=light
-  colorscheme Dawn
+  colorscheme dawn
 endif
 
 set encoding=utf8
