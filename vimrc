@@ -113,6 +113,10 @@ let g:mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr> 
 
+fun! MySys()
+    return "linux"
+endfun
+
 if MySys() == "windows"
     " Fast editing of the .vimrc
     map <leader>e :e! ~/_vim/vimrc<cr>
@@ -183,7 +187,7 @@ endif
 if has("gui_running")
   set guioptions-=T
   set t_Co=256
-  colorscheme AnotherDark
+  colorscheme anotherdark
 else
   set background=light
   colorscheme dawn
